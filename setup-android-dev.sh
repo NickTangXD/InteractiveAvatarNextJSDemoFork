@@ -96,7 +96,7 @@ esac
 echo "NEXT_PUBLIC_SERVER_URL=$SERVER_URL" > .env.local
 
 echo "✅ Created .env.local with:"
-echo "   NEXT_PUBLIC_SERVER_URL=$SERVER_URL"
+echo "NEXT_PUBLIC_SERVER_URL=$SERVER_URL"
 echo ""
 
 # Verify the configuration
