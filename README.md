@@ -5,6 +5,49 @@
 This is a sample project and was bootstrapped using [NextJS](https://nextjs.org/).
 Feel free to play around with the existing code and please leave any feedback for the SDK [here](https://github.com/HeyGen-Official/StreamingAvatarSDK/discussions).
 
+## 🤖 Android Support
+
+This project has been configured to build as an Android APK using [Capacitor](https://capacitorjs.com/).
+
+**📖 Documentation:**
+
+- 🚀 **[Android AVD Setup Guide](./ANDROID_AVD_SETUP.md)** - START HERE for AVD configuration
+- 📱 [Quick Start Guide](./QUICK_START.md) - Complete setup guide
+- 📗 [Android Build Guide](./ANDROID_BUILD.md) - Detailed Android build instructions
+- 🎯 [Android Studio Guide](./ANDROID_STUDIO_GUIDE.md) - How to run in Android Studio
+- 📊 [Project Status](./PROJECT_STATUS.md) - Current project status and roadmap
+- 👥 [Team Onboarding](./TEAM_ONBOARDING.md) - Guide for new team members
+
+**⚡ Quick Setup:**
+
+```bash
+# 1. Check environment
+npm run check-env
+
+# 2. Build and sync to Android
+npm run android:build
+
+# 3. Configure AVD (IMPORTANT - fixes DPI issues for 75" displays)
+./setup-avd.sh your_avd_name
+
+# 4. Open in Android Studio
+npm run android:open
+```
+
+**🔧 Automated Scripts:**
+
+```bash
+# List and configure AVD with correct DPI
+./setup-avd.sh                    # List all AVDs
+./setup-avd.sh 4k_vertical_tv    # Configure specific AVD
+
+# Reset DPI on running emulator (instant fix)
+./reset-avd-dpi.sh
+
+# One-line deploy
+./deploy-android.sh
+```
+
 ## Getting Started FAQ
 
 ### Setting up the demo
@@ -15,9 +58,11 @@ Feel free to play around with the existing code and please leave any feedback fo
 
 3. Run `npm install` (assuming you have npm installed. If not, please follow these instructions: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/)
 
-4. Enter your HeyGen Enterprise API Token in the `.env` file. Replace `HEYGEN_API_KEY` with your API key. This will allow the Client app to generate secure Access Tokens with which to create interactive sessions.
+4. Enter your HeyGen Enterprise API Token in the `.env` file. Set `HEYGEN_API_KEY` with your API key. This will allow the server to generate secure Access Tokens with which to create interactive sessions. **Important:** The API key is kept server-side only and never exposed to the client.
 
-   You can retrieve either the API Key by logging in to HeyGen and navigating to this page in your settings: [https://app.heygen.com/settings?from=&nav=Subscriptions%20%26%20API]. 
+   You can retrieve the API Key by logging in to HeyGen and navigating to this page in your settings: [https://app.heygen.com/settings?from=&nav=Subscriptions%20%26%20API].
+
+   **For Android Emulator Testing:** Run `./setup-android-dev.sh` to configure the connection to your local development server.
 
 5. (Optional) If you would like to use the OpenAI features, enter your OpenAI Api Key in the `.env` file.
 

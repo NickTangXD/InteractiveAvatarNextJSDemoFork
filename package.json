@@ -6,9 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx,.js,.jsx"
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "check-env": "node check-env.js",
+    "android:build": "npm run build && npx cap sync android",
+    "android:open": "npx cap open android",
+    "android:run": "npm run android:build && npx cap run android",
+    "android:sync": "npx cap sync android"
   },
   "dependencies": {
+    "@capacitor/android": "^7.4.4",
+    "@capacitor/cli": "^7.4.4",
+    "@capacitor/core": "^7.4.4",
     "@heygen/streaming-avatar": "^2.0.13",
     "@radix-ui/react-select": "^2.1.7",
     "@radix-ui/react-switch": "^1.1.4",
@@ -20,12 +28,13 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@next/eslint-plugin-next": "^15.3.1",
     "@types/node": "20.5.7",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.1.2",
     "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@typescript-eslint/parser": "^8.31.0",
-    "@next/eslint-plugin-next": "^15.3.1",
     "autoprefixer": "10.4.19",
     "eslint": "^9.25.1",
     "eslint-config-prettier": "^10.1.2",

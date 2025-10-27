@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">HeyGen Santa</string>
+    <string name="title_activity_main">HeyGen Santa</string>
+    <string name="package_name">com.school.heygensanta</string>
+    <string name="custom_url_scheme">com.school.heygensanta</string>
+</resources>

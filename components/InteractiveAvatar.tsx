@@ -49,12 +49,29 @@ function InteractiveAvatar() {
 
   async function fetchAccessToken() {
     try {
-      const response = await fetch("/api/get-access-token", {
+      // Determine the API URL based on environment
+      // For Android emulator, use 10.0.2.2 to reach host machine
+      // For web, use relative path or configured server URL
+      const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL || "";
+      const apiUrl = serverUrl
+        ? `${serverUrl}/api/get-access-token`
+        : "/api/get-access-token";
+
+      console.log("Fetching access token from:", apiUrl);
+
+      const response = await fetch(apiUrl, {
         method: "POST",
       });
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch access token: ${response.status} ${response.statusText}`
+        );
+      }
+
       const token = await response.text();
 
-      console.log("Access Token:", token); // Log the token to verify
+      console.log("Access Token retrieved successfully");
 
       return token;
     } catch (error) {

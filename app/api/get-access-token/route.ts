@@ -14,9 +14,18 @@ export async function POST() {
       },
     });
 
-    console.log("Response:", res);
-
     const data = await res.json();
+
+    console.log("HeyGen API Response status:", res.status);
+    console.log("HeyGen API Response data:", data);
+
+    if (!res.ok) {
+      console.error("HeyGen API Error:", data);
+
+      return new Response(JSON.stringify({ error: data }), {
+        status: res.status,
+      });
+    }
 
     return new Response(data.data.token, {
       status: 200,
